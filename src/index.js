@@ -23,6 +23,6 @@ function formatDate(date) {
 
   return `${day} ${hours}:${minutes}`;
 }
-let dateElement=document.querySelector("#date");
-let currentTime=new Date();
-dateElement.innerHTML=formatDate(currentTime);
+let dateElement = document.querySelector("#date");
+let currentTime = new Date();
+dateElement.innerHTML = formatDate(currentTime);
