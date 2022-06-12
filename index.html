@@ -16,66 +16,73 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <form class="search-form" id="search-form">
-          <div class="row">
-            <div class="col-6">
-              <input
-                type="search"
-                placeholder="Type a city here"
-                autofocus="on"
-                autocomplete="off"
-                id="city-input"
-                class="form-control shadow border-0"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="🔎"
-                class="form-control shadow border-0"
-              />
-            </div>
-            <div class="col-3">
-              <button
-                class="btn btn-success w-100"
-                id="current-location-button"
-              >
-                📍
-              </button>
-            </div>
-          </div>
-        </form>
-        <h1 id="city">Paris, France</h1>
-        <ul>
-          <li class="date" id="date">Wednesday, 22:00</li>
-          <li class="description">Sunny</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <div class="clearfix">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                alt="Sunny icon"
-                class="weather-icon float-left"
-              />
-              <div class="float-left">
-                <span class="temperature" id="temperature">21</span
-                ><span class="units">
-                  <a href="#" id="celsius-link">˚C </a> |
-                  <a href="#" id="fahrenheit-link">˚F</a>
-                </span>
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <div class="overview">
+            <form class="search-form" id="search-form">
+              <div class="row">
+                <div class="col-6">
+                  <input
+                    type="search"
+                    placeholder="Type a city here"
+                    autofocus="on"
+                    autocomplete="off"
+                    id="city-input"
+                    class="form-control shadow border-0"
+                  />
+                </div>
+                <div class="col-3">
+                  <input
+                    type="submit"
+                    value="🔎"
+                    class="form-control shadow border-0"
+                  />
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-success w-100"
+                    id="current-location-button"
+                  >
+                    📍
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-6">
-            <ul class="weather-information">
-              <li>Percipitation: 0%</li>
-              <li>Humidity: 77%</li>
-              <li>Wind: 8km/h</li>
+            </form>
+            <h1 id="city">Paris, France</h1>
+            <ul>
+              <li class="date" id="date">Wednesday, 22:00</li>
+              <li class="description">Sunny</li>
             </ul>
           </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                  alt="Sunny icon"
+                  class="weather-icon float-left"
+                />
+                <div class="float-left">
+                  <span class="temperature" id="temperature">21</span
+                  ><span class="units">
+                    <a href="#" id="celsius-link">˚C </a> |
+                    <a href="#" id="fahrenheit-link">˚F</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul class="weather-information">
+                <li>Percipitation: 0%</li>
+                <li>Humidity: 77%</li>
+                <li>Wind: 8km/h</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <small>
+          <a href="#" target="_blank">Open-source code</a> by Špela Pamela Škof
+        </small>
       </div>
     </div>
     <script src="src/index.js"></script>
