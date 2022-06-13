@@ -26,14 +26,21 @@ function formatDate(date) {
 
 function dispayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  //20.50
+}
+
+function searchLocation(position){
+
+}
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
 function search(event) {
   event.preventDefault();
   let apiKey = "94282537c996f720e1352f577f55f09f";
   let city = document.querySelector("#city-input").value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(dispayWeatherCondition);
 }
 
@@ -62,3 +69,6 @@ function convertToCelsius(event) {
 
 let celsiustLink = document.querySelector("#celsius-link");
 celsiustLink.addEventListener("click", convertToCelsius);
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("#click", getCurrentLocation);
