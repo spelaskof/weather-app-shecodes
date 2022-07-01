@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestapm) {
+  let date = new Date(timestapm);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -8,7 +9,6 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
-  let dayIndex = date.getDay();
   let days = [
     "Sunday",
     "Monday",
@@ -19,7 +19,7 @@ function formatDate(date) {
     "Saturday",
   ];
 
-  let day = days[dayIndex];
+  let day = days[date.getDay()];
 
   return `${day} ${hours}:${minutes}`;
 }
@@ -35,6 +35,7 @@ function dispayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document.querySelector("#date").innerHTML = response.data.dt * 1000;
 }
 
 function searchLocation(position) {
@@ -57,13 +58,14 @@ function searchCity(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
+  searchCity(city);
 }
 
 let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 let searchForm = document.querySelector("#search-form");
 
-searchForm.addEventListener("submit", search);
+searchForm.addEventListener("submit", handleSubmit);
 
 dateElement.innerHTML = formatDate(currentTime);
 
