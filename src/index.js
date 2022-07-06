@@ -1,5 +1,5 @@
-function formatDate(timestapm) {
-  let date = new Date(timestapm);
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -24,6 +24,14 @@ function formatDate(timestapm) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function dispayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -35,7 +43,9 @@ function dispayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#date").innerHTML = response.data.dt * 1000;
+
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -43,13 +53,15 @@ function dispayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
-function searchLocation(position) {
+function getForecast(coordinates) {
   let apiKey = "94282537c996f720e1352f577f55f09f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(dispayWeatherCondition);
+  axios.get(apiUrl).then(dispayForecast);
 }
 function getCurrentLocation(event) {
   event.preventDefault();
@@ -68,13 +80,9 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-let dateElement = document.querySelector("#date");
-let currentTime = new Date();
 let searchForm = document.querySelector("#search-form");
 
 searchForm.addEventListener("submit", handleSubmit);
-
-dateElement.innerHTML = formatDate(currentTime);
 
 function convertToFahrenheit(event) {
   event.preventDefault();
