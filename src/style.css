@@ -76,3 +76,24 @@ li {
 .weather-temperature img {
   margin-right: 10px;
 }
+
+.weather-forecast {
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #005689;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+}
+.weather-forecast-temperature-max {
+  color: #ff895d;
+}
+.weather-forecast-temperature-min {
+  color: #005689;
+}
+
+.weather-forecast-temperatures {
+  font-size: 14px;
+}
