@@ -122,23 +122,5 @@ let searchForm = document.querySelector("#search-form");
 
 searchForm.addEventListener("submit", handleSubmit);
 
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 70;
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 21;
-}
-
-let celsiustLink = document.querySelector("#celsius-link");
-celsiustLink.addEventListener("click", convertToCelsius);
-
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("#click", getCurrentLocation);
